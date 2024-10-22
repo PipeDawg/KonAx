@@ -9,6 +9,7 @@ public class DestructibleObject : MonoBehaviour
     
     //!NOTE for this to work, then the animation parameter name has to be "OnDeath"
     private static readonly int Death = Animator.StringToHash("OnDeath");
+    private static readonly int Hit = Animator.StringToHash("OnHit");
 
     //Call this function, when this object is being hit
     public void OnHit(int damage)
@@ -17,6 +18,10 @@ public class DestructibleObject : MonoBehaviour
         if (health <= 0)
         {
             OnDeath();    
+        }
+        else
+        {
+            animator.SetBool(Hit, true); //Starts the "taking damage" animation
         }
     }
 
@@ -29,6 +34,12 @@ public class DestructibleObject : MonoBehaviour
     public void DestroyAfterTime()
     {
         Destroy(this.GameObject());
+    }
+
+    // Gets called in an animation event 
+    public void StopHitAnimation()
+    {
+        animator.SetBool(Hit, false);
     }
 
     private void Update()
