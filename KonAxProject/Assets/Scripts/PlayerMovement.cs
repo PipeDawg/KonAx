@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _movementAcceleration = 6;
     [SerializeField] private float _maxMovementSpeed = 4;
     [Space]
-    [Tooltip("MainCamera of the Scene and player body")]
+    [Header("MainCamera of the Scene and player body")]
     [SerializeField] GameObject Cam;
     [SerializeField] GameObject PlayerBody;
 
