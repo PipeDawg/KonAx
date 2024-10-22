@@ -44,7 +44,7 @@ public class DestructibleObject : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             OnHit(1);
         }
