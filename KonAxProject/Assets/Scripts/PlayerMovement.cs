@@ -1,16 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Callbacks;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 //For the Rigidbody :D
 [RequireComponent(typeof(Rigidbody))]
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody rb;
+    private Rigidbody _rb;
     
     [Header("Speeds")]
     [SerializeField] private float movementAcceleration = 6;
@@ -22,13 +17,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject cam;
     [SerializeField] private GameObject playerBody;
 
-
     void Start()
     {
-        rb = this.GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        _rb = this.GetComponent<Rigidbody>();
+        _rb.freezeRotation = true;
         transform.rotation = Quaternion.Euler(0,cam.transform.rotation.eulerAngles.y -365 ,0);
-        
     }
 
     void Update()
@@ -40,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Reset player movement orientation to cameras forward");
         }
 
-        Debug.Log(rb.velocity.magnitude);
+        Debug.Log(_rb.velocity.magnitude);
     }
 
      void FixedUpdate()
@@ -52,29 +45,33 @@ public class PlayerMovement : MonoBehaviour
      {
         if (!Physics.Raycast(transform.position, Vector3.down, 0.1f))
         {
-            rb.AddForce(new Vector3(0,gravity,0));
+            _rb.AddForce(new Vector3(0,gravity,0));
         }
         
         if (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Horizontal") < 0)
         {
-            rb.AddForce(this.transform.right * movementAcceleration * Input.GetAxisRaw("Horizontal"));
-            UpdatePlayerBodyOrientation(rb.velocity);
+            _rb.AddForce(this.transform.right * (movementAcceleration * Input.GetAxisRaw("Horizontal")));
+            UpdatePlayerBodyOrientation(_rb.velocity);
         }
+        
         if (Input.GetAxisRaw("Vertical") > 0 || Input.GetAxisRaw("Vertical") < 0)
         {
-            rb.AddForce(this.transform.forward * movementAcceleration * Input.GetAxisRaw("Vertical"));
-            UpdatePlayerBodyOrientation(rb.velocity);
+            _rb.AddForce(this.transform.forward * (movementAcceleration * Input.GetAxisRaw("Vertical")));
+            UpdatePlayerBodyOrientation(_rb.velocity);
         }
-        if (rb.velocity.magnitude > maxMovementSpeed)
+        
+        if (_rb.velocity.magnitude > maxMovementSpeed)
         {
-            rb.velocity = rb.velocity.normalized * maxMovementSpeed;
+            _rb.velocity = _rb.velocity.normalized * maxMovementSpeed;
         }
-        if (rb.velocity.magnitude <= 0.1f)
+        
+        if (_rb.velocity.magnitude <= 0.1f)
         {
-            rb.velocity = Vector3.zero;
-        } else  
+            _rb.velocity = Vector3.zero;
+        }
+        else  
         {
-            rb.velocity *= drag;
+            _rb.velocity *= drag;
         }
      }
 
