@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Callbacks;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
@@ -9,33 +10,37 @@ using UnityEngine.PlayerLoop;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody _rb;
+    private Rigidbody rb;
     
     [Header("Speeds")]
-    [SerializeField] private float _movementAcceleration = 6;
-    [SerializeField] private float _maxMovementSpeed = 4;
+    [SerializeField] private float movementAcceleration = 6;
+    [SerializeField] private float maxMovementSpeed = 4;
+    [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float drag = 0.9f;
     [Space]
     [Header("MainCamera of the Scene and player body")]
-    [SerializeField] GameObject Cam;
-    [SerializeField] GameObject PlayerBody;
+    [SerializeField] private GameObject cam;
+    [SerializeField] private GameObject playerBody;
 
 
     void Start()
     {
-        _rb = this.GetComponent<Rigidbody>();
-        _rb.freezeRotation = true;
-        transform.rotation = Quaternion.Euler(0,Cam.transform.rotation.eulerAngles.y -365 ,0);
+        rb = this.GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+        transform.rotation = Quaternion.Euler(0,cam.transform.rotation.eulerAngles.y -365 ,0);
         
     }
 
     void Update()
     {
         // Resets the players movement vector to the cameras forward face.
-        if (transform.rotation != Quaternion.Euler(transform.rotation.x,Cam.transform.rotation.eulerAngles.y -365 ,transform.rotation.z))
+        if (transform.rotation != Quaternion.Euler(transform.rotation.x,cam.transform.rotation.eulerAngles.y -365 ,transform.rotation.z))
         {
-            transform.rotation = Quaternion.Euler(transform.rotation.x,Cam.transform.rotation.eulerAngles.y -365 ,transform.rotation.z);
+            transform.rotation = Quaternion.Euler(transform.rotation.x,cam.transform.rotation.eulerAngles.y -365 ,transform.rotation.z);
             Debug.Log("Reset player movement orientation to cameras forward");
         }
+
+        Debug.Log(rb.velocity.magnitude);
     }
 
      void FixedUpdate()
@@ -45,24 +50,36 @@ public class PlayerMovement : MonoBehaviour
 
      void MoveCharacter() // handles the player movement through Rigidbody
      {
+        if (!Physics.Raycast(transform.position, Vector3.down, 0.1f))
+        {
+            rb.AddForce(new Vector3(0,gravity,0));
+        }
+        
         if (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Horizontal") < 0)
         {
-            _rb.AddForce(this.transform.right * _movementAcceleration * Input.GetAxisRaw("Horizontal"));
-            UpdatePlayerBodyOrientation(_rb.velocity);
+            rb.AddForce(this.transform.right * movementAcceleration * Input.GetAxisRaw("Horizontal"));
+            UpdatePlayerBodyOrientation(rb.velocity);
         }
         if (Input.GetAxisRaw("Vertical") > 0 || Input.GetAxisRaw("Vertical") < 0)
         {
-            _rb.AddForce(this.transform.forward * _movementAcceleration * Input.GetAxisRaw("Vertical"));
-            UpdatePlayerBodyOrientation(_rb.velocity);
+            rb.AddForce(this.transform.forward * movementAcceleration * Input.GetAxisRaw("Vertical"));
+            UpdatePlayerBodyOrientation(rb.velocity);
         }
-        if (_rb.velocity.magnitude > -_maxMovementSpeed)
+        if (rb.velocity.magnitude > maxMovementSpeed)
         {
-            _rb.AddForce(_rb.velocity.normalized * _maxMovementSpeed);
+            rb.velocity = rb.velocity.normalized * maxMovementSpeed;
+        }
+        if (rb.velocity.magnitude <= 0.1f)
+        {
+            rb.velocity = Vector3.zero;
+        } else  
+        {
+            rb.velocity *= drag;
         }
      }
 
      void UpdatePlayerBodyOrientation(Vector3 orientation)
      {
-        PlayerBody.transform.forward = orientation;
+        playerBody.transform.forward = orientation;
      }
 }
