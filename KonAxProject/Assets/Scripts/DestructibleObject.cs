@@ -7,13 +7,14 @@ public class DestructibleObject : MonoBehaviour
     [Space]
     [SerializeField] private Animator animator;
     
+    //!NOTE for this to work, then the animation parameter name has to be "OnDeath"
     private static readonly int Death = Animator.StringToHash("OnDeath");
 
     //Call this function, when this object is being hit
     public void OnHit(int damage)
     {
         health -= damage;
-        if (health >= 0)
+        if (health <= 0)
         {
             OnDeath();    
         }
@@ -28,5 +29,13 @@ public class DestructibleObject : MonoBehaviour
     public void DestroyAfterTime()
     {
         Destroy(this.GameObject());
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            OnHit(1);
+        }
     }
 }
