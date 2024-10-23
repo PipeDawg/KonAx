@@ -251,6 +251,7 @@ MonoBehaviour:
   drag: 0.9
   cam: {fileID: 0}
   playerBody: {fileID: 6610108132526006425}
+  animator: {fileID: 3048997471414901174}
 --- !u!1 &4990608992298394664
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,7 +497,7 @@ GameObject:
   - component: {fileID: 5811524773677309254}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
