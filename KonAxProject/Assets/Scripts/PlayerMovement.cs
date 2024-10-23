@@ -35,10 +35,7 @@ public class PlayerMovement : MonoBehaviour
         if (transform.rotation != Quaternion.Euler(transform.rotation.x,cam.transform.rotation.eulerAngles.y -365 ,transform.rotation.z))
         {
             transform.rotation = Quaternion.Euler(transform.rotation.x,cam.transform.rotation.eulerAngles.y -365 ,transform.rotation.z);
-            Debug.Log("Reset player movement orientation to cameras forward");
         }
-
-        Debug.Log(_rb.velocity.magnitude);
     }
 
      void FixedUpdate()
