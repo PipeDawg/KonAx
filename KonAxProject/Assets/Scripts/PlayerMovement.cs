@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody _rb;
     
     [Header("Speeds")]
-    [SerializeField] private float movementAcceleration = 6;
-    [SerializeField] private float maxMovementSpeed = 4;
+    [SerializeField] private float movementAcceleration = 60;
+    [SerializeField] private float maxMovementSpeed = 5;
     [SerializeField] private float gravity = -9.81f;
     [SerializeField] private float drag = 0.9f;
     [Space]
@@ -19,8 +19,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        _rb = this.GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
         _rb.freezeRotation = true;
+        _rb.useGravity = false;
         transform.rotation = Quaternion.Euler(0,cam.transform.rotation.eulerAngles.y -365 ,0);
     }
 
@@ -50,13 +51,13 @@ public class PlayerMovement : MonoBehaviour
         
         if (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Horizontal") < 0)
         {
-            _rb.AddForce(this.transform.right * (movementAcceleration * Input.GetAxisRaw("Horizontal")));
+            _rb.AddForce(transform.right * (movementAcceleration * Input.GetAxisRaw("Horizontal")));
             UpdatePlayerBodyOrientation(_rb.velocity);
         }
         
         if (Input.GetAxisRaw("Vertical") > 0 || Input.GetAxisRaw("Vertical") < 0)
         {
-            _rb.AddForce(this.transform.forward * (movementAcceleration * Input.GetAxisRaw("Vertical")));
+            _rb.AddForce(transform.forward * (movementAcceleration * Input.GetAxisRaw("Vertical")));
             UpdatePlayerBodyOrientation(_rb.velocity);
         }
         
