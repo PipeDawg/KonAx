@@ -7,7 +7,6 @@ public class DestructibleObject : MonoBehaviour
     [Space]
     [SerializeField] private Animator animator;
     
-    //!NOTE for this to work, then the animation parameter name has to be "OnDeath"
     private static readonly int Death = Animator.StringToHash("OnDeath");
     private static readonly int Hit = Animator.StringToHash("OnHit");
 

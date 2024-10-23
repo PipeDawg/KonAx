@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class DoorScript : MonoBehaviour
 {
+    private static readonly int IsOpen = Animator.StringToHash("isOpen");
     [SerializeField] private Animator animator;
 
     void Start()
@@ -16,8 +14,7 @@ public class DoorScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            animator.SetBool("isOpen",true);
-            Debug.Log("Player entered doors trigger");
+            animator.SetBool(IsOpen,true);
         }
     }
 
@@ -25,7 +22,7 @@ public class DoorScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            animator.SetBool("isOpen", false);
+            animator.SetBool(IsOpen, false);
         }
     }
 }

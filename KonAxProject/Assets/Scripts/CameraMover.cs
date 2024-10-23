@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TreeEditor;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class CameraMover : MonoBehaviour
@@ -18,7 +14,7 @@ public class CameraMover : MonoBehaviour
 
     //Below makes singleton
     private static CameraMover _instance;
-    public static CameraMover instance => _instance;
+    public static CameraMover Instance => _instance;
 
     void Awake()
     {
@@ -42,13 +38,13 @@ public class CameraMover : MonoBehaviour
     }
 
     //MoveCamera is called by the move camera triggers to move the camera to a desired destination
-    public void MoveCamera(Transform CameraDestination)
+    public void MoveCamera(Transform cameraDestination)
     {
         _startPos = transform.position;
         _startRot = transform.rotation;
 
-        _endPos = CameraDestination.position;
-        _endRot = CameraDestination.rotation;
+        _endPos = cameraDestination.position;
+        _endRot = cameraDestination.rotation;
     }
 
     void Update()
@@ -61,7 +57,7 @@ public class CameraMover : MonoBehaviour
             transform.position = Vector3.Lerp(_startPos, _endPos, percentageComplete);
             transform.rotation = Quaternion.Lerp(_startRot, _endRot, percentageComplete);
         }
-        else if (_elapsedTime != 0)
+        else
         {
             _elapsedTime = 0;
         }

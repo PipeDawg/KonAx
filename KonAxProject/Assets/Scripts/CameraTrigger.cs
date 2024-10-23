@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraTrigger : MonoBehaviour
@@ -10,7 +7,7 @@ public class CameraTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            CameraMover.instance.MoveCamera(cameraPosition);
+            CameraMover.Instance.MoveCamera(cameraPosition);
         }
     }
 }
