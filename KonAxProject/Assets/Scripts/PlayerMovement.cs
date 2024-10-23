@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("MainCamera of the Scene and player body")]
     [SerializeField] private GameObject cam;
     [SerializeField] private GameObject playerBody;
+    [Space]
+    [Header("Animation")]
+    [SerializeField] private Animator animator;
+    private static readonly int IsMoving = Animator.StringToHash("IsMoving");
 
     void Start()
     {
@@ -66,13 +70,15 @@ public class PlayerMovement : MonoBehaviour
             _rb.velocity = _rb.velocity.normalized * maxMovementSpeed;
         }
         
-        if (_rb.velocity.magnitude <= 0.1f)
+        if (_rb.velocity.magnitude <= 1.1f)
         {
             _rb.velocity = Vector3.zero;
+            animator.SetBool(IsMoving, false);
         }
         else  
         {
             _rb.velocity *= drag;
+            animator.SetBool(IsMoving, true);
         }
      }
 
