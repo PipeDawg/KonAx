@@ -56,13 +56,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetAxisRaw("Horizontal") > 0 || Input.GetAxisRaw("Horizontal") < 0)
         {
             _rb.AddForce(transform.right * (movementAcceleration * Input.GetAxisRaw("Horizontal")));
-            UpdatePlayerBodyOrientation(_rb.velocity);
         }
         
         if (Input.GetAxisRaw("Vertical") > 0 || Input.GetAxisRaw("Vertical") < 0)
         {
             _rb.AddForce(transform.forward * (movementAcceleration * Input.GetAxisRaw("Vertical")));
-            UpdatePlayerBodyOrientation(_rb.velocity);
         }
         
         if (_rb.velocity.magnitude > maxMovementSpeed)
@@ -78,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         else  
         {
             _rb.velocity *= drag;
+            UpdatePlayerBodyOrientation(_rb.velocity);
             animator.SetBool(IsMoving, true);
         }
      }
