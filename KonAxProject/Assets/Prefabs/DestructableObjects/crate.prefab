@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 9eb7a1bb9c50aa5489a67ec08beb2f08, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.5
+      value: -2.9159384
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eb7a1bb9c50aa5489a67ec08beb2f08, type: 3}
       propertyPath: m_LocalPosition.y
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eb7a1bb9c50aa5489a67ec08beb2f08, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6
+      value: 9.972384
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eb7a1bb9c50aa5489a67ec08beb2f08, type: 3}
       propertyPath: m_LocalRotation.w
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eb7a1bb9c50aa5489a67ec08beb2f08, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eb7a1bb9c50aa5489a67ec08beb2f08, type: 3}
       propertyPath: m_LocalRotation.y
@@ -51,6 +51,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9eb7a1bb9c50aa5489a67ec08beb2f08, type: 3}
       propertyPath: m_Name
       value: crate
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9eb7a1bb9c50aa5489a67ec08beb2f08, type: 3}
+      propertyPath: m_TagString
+      value: DestructibleObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
