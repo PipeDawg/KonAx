@@ -132,11 +132,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  chanceToDrop: 50
   itemDrops:
-  - {fileID: 919132149155446097, guid: 6c88d684801f31f4284d76c87c411e4f, type: 3}
-  - {fileID: 919132149155446097, guid: 6c70a494e03f54746a5adfd4757d5c19, type: 3}
-  - {fileID: 919132149155446097, guid: 333aa30acda43e2498b697bea8bfaf2d, type: 3}
+  - {fileID: 3035647937092331261, guid: e4318b1e570489a47b4b62c9a0ec46c2, type: 3}
+  - {fileID: 8113274962935619153, guid: 1a3c25ca4610b824d8c32c1daf5cf257, type: 3}
+  - {fileID: 585299361355827332, guid: a59b894e01bb49a44beedf586adc9c91, type: 3}
   dropPlace: {fileID: 8968900279104531984}
   animator: {fileID: 1508181743911619253}
 --- !u!95 &1508181743911619253
