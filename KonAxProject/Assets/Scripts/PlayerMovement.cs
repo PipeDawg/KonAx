@@ -41,9 +41,10 @@ public class PlayerMovement : MonoBehaviour
      void FixedUpdate()
      {
         MoveCharacter();
+        PLayerAnimation();
      }
 
-     void MoveCharacter() // handles the player movement through Rigidbody
+     private void MoveCharacter() // handles the player movement through Rigidbody
      {
         if (!Physics.Raycast(transform.position, Vector3.down, 0.1f))
         {
@@ -68,18 +69,29 @@ public class PlayerMovement : MonoBehaviour
         if (_rb.velocity.magnitude <= 1.1f)
         {
             _rb.velocity = Vector3.zero;
-            animator.SetBool(IsMoving, false);
         }
         else  
         {
             _rb.velocity *= drag;
             UpdatePlayerBodyOrientation(_rb.velocity);
-            animator.SetBool(IsMoving, true);
         }
      }
 
-     void UpdatePlayerBodyOrientation(Vector3 orientation)
+     private void UpdatePlayerBodyOrientation(Vector3 orientation)
      {
         playerBody.transform.forward = orientation;
+     }
+
+     //Makes animation work
+     private void PLayerAnimation()
+     {
+         if (Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
+         {
+             animator.SetBool(IsMoving, true);
+         }
+         else
+         {
+             animator.SetBool(IsMoving, false);
+         }
      }
 }
