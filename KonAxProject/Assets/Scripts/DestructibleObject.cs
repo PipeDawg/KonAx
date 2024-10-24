@@ -1,10 +1,15 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class DestructibleObject : MonoBehaviour
 {
+    [Header("Health")]
     [SerializeField] private int health; //How many hits it takes before the object is destroyed
-    [Space]
+    [Header("ItemDrops")]
+    [SerializeField] private List<GameObject> itemDrops = new List<GameObject>();
+    [SerializeField] private Transform dropPlace;
+    [Header("Animation")]
     [SerializeField] private Animator animator;
     
     private static readonly int Death = Animator.StringToHash("OnDeath");
@@ -27,6 +32,16 @@ public class DestructibleObject : MonoBehaviour
     private void OnDeath()
     {
         animator.SetBool(Death, true); //Starts the death animation
+        Drop();
+    }
+
+    private void Drop()
+    {
+        int number = Random.Range(0, itemDrops.Count);
+        if (itemDrops[number] != null)
+        {
+            Instantiate(itemDrops[number], dropPlace.position, Quaternion.identity);
+        }
     }
 
     //Gets called in an animation event
@@ -39,13 +54,5 @@ public class DestructibleObject : MonoBehaviour
     public void StopHitAnimation()
     {
         animator.SetBool(Hit, false);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            OnHit(1);
-        }
     }
 }
