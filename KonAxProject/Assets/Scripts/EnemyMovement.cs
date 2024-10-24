@@ -6,11 +6,14 @@ public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody _rb;
     private Transform _targetTransform;
+    private Vector3 _targetPositionYIgnored;
     private GameObject _lastWaypoint;
     private bool _hasTarget = false;
     private bool _reverseWaypointIndex = false;
-    private bool _waitingForDelay = true;
-    private int _currentWaypointTargetIndex = 0;
+    private bool _waitingForDelay = false;
+    private bool _isMoving = false;
+    private int _currentWaypointTargetIndex = 1;
+
     [SerializeField] private GameObject[] waypoints;
     [SerializeField] private float speed = 0.03f;
     [SerializeField] private float rotationSpeed = 1;
@@ -21,22 +24,34 @@ public class EnemyMovement : MonoBehaviour
         _rb = gameObject.GetComponent<Rigidbody>();
         _rb.freezeRotation = true;
         //_rb.useGravity = false;
-
-        _targetTransform = waypoints[0].transform;
+    
+        _targetTransform = waypoints[_currentWaypointTargetIndex].transform;
     }
     void Update()
     {
         if (_hasTarget)
         {
+            _waitingForDelay = false;
             MoveToTarget();
             TurnToTarget();
         } 
         else
         {
-            PatrolCycle();
-            MoveToTarget();
-            if (transform.position != _targetTransform.position)
+            if (transform.position == _targetTransform.position)
+            {     
+
+                PatrolCycle();
+                if (_waitingForDelay)
+                {
+                    MoveToTarget();
+                    WaitForPatrolDelay();
+                    Debug.Log("run Timer");
+                }
+                
+            } else if (transform.position != _targetPositionYIgnored && !_waitingForDelay)
             {
+
+                MoveToTarget();
                 TurnToTarget();
             }
         }
@@ -44,28 +59,16 @@ public class EnemyMovement : MonoBehaviour
 
     void PatrolCycle()
     {
-        if (transform.position == _targetTransform.position && !_waitingForDelay)
+        if (_currentWaypointTargetIndex > waypoints.Length - 1)
         {
-            if (_currentWaypointTargetIndex < waypoints.Length -1 && !_reverseWaypointIndex)
-            {
-                _currentWaypointTargetIndex++;
-            } else
-            {
-                _reverseWaypointIndex = true;
-                _currentWaypointTargetIndex--;
-                if (_currentWaypointTargetIndex < 0)
-                {
-                    _reverseWaypointIndex = false;
-                    _currentWaypointTargetIndex = 0;
-                }
-            }
-            _targetTransform = waypoints[_currentWaypointTargetIndex].transform;
-            _waitingForDelay = true;
+            _currentWaypointTargetIndex = 0;
         }
-        else if (transform.position == _targetTransform.position && _waitingForDelay)
+        else
         {
-            StartCoroutine(WaitForPatrolDelay());
+            _currentWaypointTargetIndex++;
         }
+        _lastWaypoint = waypoints[_currentWaypointTargetIndex];
+        _targetTransform = waypoints[_currentWaypointTargetIndex].transform;
     }
 
     IEnumerator WaitForPatrolDelay()
@@ -76,7 +79,8 @@ public class EnemyMovement : MonoBehaviour
 
     void MoveToTarget()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _targetTransform.position, speed);
+        _targetPositionYIgnored = new Vector3(_targetTransform.position.x, transform.position.y, _targetTransform.position.z);
+        transform.position = Vector3.MoveTowards(transform.position, _targetPositionYIgnored, speed);
     }
 
     void TurnToTarget()
