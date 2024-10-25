@@ -159,7 +159,7 @@ public abstract class EnemyTypes : MonoBehaviour
 
     public virtual void Attack()
     {
-        if (_hasTarget && Mathf.Abs(transform.position.magnitude - _targetTransform.position.magnitude) <= attackRange)
+        if (_hasTarget && Mathf.Abs((transform.position - _targetTransform.position).magnitude) <= attackRange)
         {
             _isAttacking = true;
             _animator.SetBool(IsAttacking, true);
