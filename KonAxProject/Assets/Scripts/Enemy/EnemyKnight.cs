@@ -13,10 +13,13 @@ public class EnemyKnight : EnemyTypes
 
     private void FixedUpdate()
     {
-        Attack();
-        if (!_isAttacking)
+        if (!_isDead)
         {
-            MovementHandler();
+            Attack();
+            if (!_isAttacking)
+            {
+                MovementHandler();
+            }
         }
     }
 }

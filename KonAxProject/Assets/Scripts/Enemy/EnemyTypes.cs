@@ -16,6 +16,8 @@ public abstract class EnemyTypes : MonoBehaviour
     [HideInInspector] public bool _canDamage;
     private int _currentWaypointTargetIndex = 1;
     private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
+    private static readonly int IsDead = Animator.StringToHash("IsDead");
+    [HideInInspector] public bool _isDead = false;
 
     [Header("Movement Settings")]
     [SerializeField] private GameObject[] waypoints;
@@ -151,6 +153,12 @@ public abstract class EnemyTypes : MonoBehaviour
     }
 
     public void OnDeath()
+    {
+        _isDead = true;
+        _animator.SetBool(IsDead, true);
+    }
+
+    public void Destroy()
     {
         Destroy(gameObject);
     }
