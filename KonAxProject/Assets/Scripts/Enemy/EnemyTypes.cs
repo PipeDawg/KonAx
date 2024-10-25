@@ -9,9 +9,13 @@ public abstract class EnemyTypes : MonoBehaviour
     private Transform _targetTransform;
     private Vector3 _targetPositionYIgnored;
     private GameObject _lastWaypoint;
+    private Animator _animator;
     private bool _hasTarget = false;
     private bool _waitingForDelay = false;
+    [HideInInspector] public bool _isAttacking;
+    [HideInInspector] public bool _canDamage;
     private int _currentWaypointTargetIndex = 1;
+    private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
 
     [Header("Movement Settings")]
     [SerializeField] private GameObject[] waypoints;
@@ -21,7 +25,10 @@ public abstract class EnemyTypes : MonoBehaviour
     [Space]
     [Header("Enemy Stats")]
     [SerializeField] private int health = 10;
-    [SerializeField] private int enemyDamage = 1;
+    public int enemyDamage = 1;
+    [SerializeField] private float attackRange = 1;
+    [Header("Weapon")]
+    [SerializeField] private GameObject weapon;
 
     public virtual void MovementStart()
     {
@@ -84,12 +91,16 @@ public abstract class EnemyTypes : MonoBehaviour
 
     void MoveToTarget()
     {
-        _targetPositionYIgnored = new Vector3(_targetTransform.position.x, transform.position.y, _targetTransform.position.z);
-        transform.position = Vector3.MoveTowards(transform.position, _targetPositionYIgnored, speed);
-        if (_rb.velocity.magnitude > speed)
+        if (!_isAttacking)
         {
-            _rb.velocity = _rb.velocity.normalized * speed;
+            _targetPositionYIgnored = new Vector3(_targetTransform.position.x, transform.position.y, _targetTransform.position.z);
+            transform.position = Vector3.MoveTowards(transform.position, _targetPositionYIgnored, speed);
+            if (_rb.velocity.magnitude > speed)
+            {
+                _rb.velocity = _rb.velocity.normalized * speed;
+            }
         }
+
     }
 
     void TurnToTarget()
@@ -138,5 +149,38 @@ public abstract class EnemyTypes : MonoBehaviour
     public void OnDeath()
     {
         Destroy(gameObject);
+    }
+
+    public virtual void EnemySetup()
+    {
+        _animator = GetComponent<Animator>();
+        weapon.GetComponent<Collider>().enabled = false;
+    }
+
+    public virtual void Attack()
+    {
+        if (_hasTarget && transform.position.magnitude - _targetTransform.position.magnitude <= attackRange)
+        {
+            _isAttacking = true;
+            _animator.SetBool(IsAttacking, true);
+        }
+    }
+
+    public void StopAttacking()
+    {
+        _isAttacking = false;
+        _animator.SetBool(IsAttacking, false);
+    }
+
+    public void CanDamage()
+    {
+        _canDamage = true;
+        weapon.GetComponent<Collider>().enabled = true;
+    }
+
+    public void CantDamage()
+    {
+        _canDamage = false;
+        weapon.GetComponent<Collider>().enabled = false;
     }
 }
