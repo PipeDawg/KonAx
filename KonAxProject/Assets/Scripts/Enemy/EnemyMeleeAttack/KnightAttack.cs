@@ -10,7 +10,7 @@ public class KnightAttack : MonoBehaviour
         {
             if (GetComponentInParent<EnemyKnight>()._canDamage)
             {
-                other.GetComponent<PlayerStats>().TakeDamage(GetComponentInParent<EnemyKnight>().enemyDamage);
+                other.GetComponentInParent<PlayerStats>().TakeDamage(GetComponentInParent<EnemyKnight>().enemyDamage);
             }
         }
     }

@@ -15,7 +15,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             if (GetComponentInParent<PlayerAttack>().canDamage)
             {
-                other.GetComponent<EnemyKnight>().OnHit(GetComponentInParent<PlayerAttack>().damage);
+                other.GetComponentInParent<EnemyKnight>().OnHit(GetComponentInParent<PlayerAttack>().damage);
             }
         }
         else if (other.CompareTag("EnemyMage"))

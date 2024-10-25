@@ -7,11 +7,16 @@ public class EnemyKnight : EnemyTypes
 {
     void Start()
     {
+        EnemySetup();
         MovementStart();
     }
 
     void Update()
     {
-        MovementHandler();
+        Attack();
+        if (!_isAttacking)
+        {
+            MovementHandler();
+        }
     }
 }

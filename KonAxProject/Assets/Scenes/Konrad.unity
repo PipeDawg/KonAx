@@ -409,7 +409,7 @@ PrefabInstance:
       objectReference: {fileID: 1689467149}
     - target: {fileID: 6812784315666892364, guid: 0cdd9b4a2395d3e438972dd6333d0210, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.420476
+      value: -2.87
       objectReference: {fileID: 0}
     - target: {fileID: 6812784315666892364, guid: 0cdd9b4a2395d3e438972dd6333d0210, type: 3}
       propertyPath: m_LocalPosition.y
@@ -417,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6812784315666892364, guid: 0cdd9b4a2395d3e438972dd6333d0210, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.97321
+      value: 6.09
       objectReference: {fileID: 0}
     - target: {fileID: 6812784315666892364, guid: 0cdd9b4a2395d3e438972dd6333d0210, type: 3}
       propertyPath: m_LocalRotation.w
@@ -450,7 +450,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4932740353138688541, guid: 0cdd9b4a2395d3e438972dd6333d0210, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1074998506}
   m_SourcePrefab: {fileID: 100100000, guid: 0cdd9b4a2395d3e438972dd6333d0210, type: 3}
 --- !u!1001 &366510035
 PrefabInstance:
@@ -1015,6 +1018,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6, y: 1, z: 6}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!1 &1074998500 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4932740353138688541, guid: 0cdd9b4a2395d3e438972dd6333d0210, type: 3}
+  m_PrefabInstance: {fileID: 278268001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1074998506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074998500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7815030ab5b8444a2f7b878eab6670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
 --- !u!1001 &1104901012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1471,7 +1492,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3664321686206292568, guid: 8916cc491a2dc65429ca9a6c3341e230, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.46
+      value: -9.33
       objectReference: {fileID: 0}
     - target: {fileID: 3664321686206292568, guid: 8916cc491a2dc65429ca9a6c3341e230, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1479,7 +1500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3664321686206292568, guid: 8916cc491a2dc65429ca9a6c3341e230, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.04
+      value: 4.98
       objectReference: {fileID: 0}
     - target: {fileID: 3664321686206292568, guid: 8916cc491a2dc65429ca9a6c3341e230, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1512,6 +1533,14 @@ PrefabInstance:
     - target: {fileID: 4949641030391029332, guid: 8916cc491a2dc65429ca9a6c3341e230, type: 3}
       propertyPath: m_Name
       value: EnemyKnightAnimated
+      objectReference: {fileID: 0}
+    - target: {fileID: 7935831934675179200, guid: 8916cc491a2dc65429ca9a6c3341e230, type: 3}
+      propertyPath: m_TagString
+      value: EnemyKnight
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193494458254123447, guid: 8916cc491a2dc65429ca9a6c3341e230, type: 3}
+      propertyPath: attackRange
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
