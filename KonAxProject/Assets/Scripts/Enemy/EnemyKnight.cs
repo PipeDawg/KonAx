@@ -11,7 +11,7 @@ public class EnemyKnight : EnemyTypes
         MovementStart();
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         Attack();
         if (!_isAttacking)

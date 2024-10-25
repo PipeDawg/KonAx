@@ -11,7 +11,7 @@ public class EnemyMage : EnemyTypes
         MovementStart();
     }
 
-    void Update()
+    private void FixedUpdate()
     {
         MovementHandler();
     }
