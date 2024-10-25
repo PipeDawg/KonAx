@@ -22,7 +22,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             if (GetComponentInParent<PlayerAttack>().canDamage)
             {
-                other.GetComponent<EnemyMage>().OnHit(GetComponentInParent<PlayerAttack>().damage);
+                other.GetComponentInParent<EnemyMage>().OnHit(GetComponentInParent<PlayerAttack>().damage);
             }
         }
     }

@@ -30,7 +30,7 @@ public abstract class EnemyTypes : MonoBehaviour
     public int enemyDamage = 1;
     [SerializeField] private float attackRange = 1;
     [Header("Weapon")]
-    [SerializeField] private GameObject weapon;
+    [SerializeField] public GameObject weapon;
     [Header("ParticleSystem and SpawnPlace")]
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private Transform ParticleSystemSpawnPlace;
@@ -166,7 +166,7 @@ public abstract class EnemyTypes : MonoBehaviour
     public virtual void EnemySetup()
     {
         _animator = GetComponent<Animator>();
-        weapon.GetComponent<Collider>().enabled = false;
+         weapon.GetComponent<Collider>().enabled = false;
     }
 
     public virtual void Attack()
