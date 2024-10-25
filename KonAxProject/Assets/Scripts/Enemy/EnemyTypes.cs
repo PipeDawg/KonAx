@@ -84,7 +84,7 @@ public abstract class EnemyTypes : MonoBehaviour
 
     void MoveToTarget()
     {
-        _targetPositionYIgnored = new Vector3(_targetTransform.position.x, 0, _targetTransform.position.z);
+        _targetPositionYIgnored = new Vector3(_targetTransform.position.x, transform.position.y, _targetTransform.position.z);
         transform.position = Vector3.MoveTowards(transform.position, _targetPositionYIgnored, speed);
         if (_rb.velocity.magnitude > speed)
         {
