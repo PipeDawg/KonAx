@@ -476,15 +476,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isAttacking: 0
   _canDamage: 0
+  _isDead: 0
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  speed: 0.01
+  speed: 0.1
   rotationSpeed: 100
   patrolWaitTime: 0
   health: 10
