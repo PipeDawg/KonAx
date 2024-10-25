@@ -29,6 +29,9 @@ public abstract class EnemyTypes : MonoBehaviour
     [SerializeField] private float attackRange = 1;
     [Header("Weapon")]
     [SerializeField] private GameObject weapon;
+    [Header("ParticleSystem and SpawnPlace")]
+    [SerializeField] private ParticleSystem particleSystem;
+    [SerializeField] private Transform ParticleSystemSpawnPlace;
 
     public virtual void MovementStart()
     {
@@ -140,6 +143,7 @@ public abstract class EnemyTypes : MonoBehaviour
     public void OnHit(int damage)
     {
         health -= damage;
+        Instantiate(particleSystem, ParticleSystemSpawnPlace);
         if (health <= 0)
         {
             OnDeath();

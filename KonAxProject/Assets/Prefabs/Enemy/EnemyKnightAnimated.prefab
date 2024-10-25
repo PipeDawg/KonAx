@@ -411,6 +411,7 @@ Transform:
   m_Children:
   - {fileID: 8256084052420723855}
   - {fileID: 4082620427562255535}
+  - {fileID: 4195846718035684285}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &10468213049039846
@@ -478,6 +479,11 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   speed: 0.01
   rotationSpeed: 100
   patrolWaitTime: 0
@@ -485,6 +491,8 @@ MonoBehaviour:
   enemyDamage: 1
   attackRange: 1.3
   weapon: {fileID: 5753761309881879774}
+  particleSystem: {fileID: 5600419694053995834, guid: 5b346e4254d548849b205112cec78267, type: 3}
+  ParticleSystemSpawnPlace: {fileID: 4195846718035684285}
 --- !u!1 &5634784309234518412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,3 +1057,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &9060664704880886863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4195846718035684285}
+  m_Layer: 0
+  m_Name: ParticleTakeDamagePlace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4195846718035684285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9060664704880886863}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3664321686206292568}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
