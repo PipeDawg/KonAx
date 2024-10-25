@@ -485,7 +485,7 @@ MonoBehaviour:
   patrolWaitTime: 0
   health: 10
   enemyDamage: 1
-  attackRange: 1.3
+  attackRange: 1.35
   weapon: {fileID: 5753761309881879774}
   particleSystem: {fileID: 5600419694053995834, guid: 5b346e4254d548849b205112cec78267, type: 3}
   ParticleSystemSpawnPlace: {fileID: 4195846718035684285}
