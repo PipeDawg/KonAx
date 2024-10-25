@@ -283,6 +283,7 @@ GameObject:
   - component: {fileID: 4921735289664501000}
   - component: {fileID: 5311853042813861083}
   - component: {fileID: 7492678856162929537}
+  - component: {fileID: 4846239827464698568}
   m_Layer: 0
   m_Name: PlayerAnimated
   m_TagString: Player
@@ -389,6 +390,19 @@ MonoBehaviour:
   damage: 1
   weapon: {fileID: 3851404564647359280}
   canDamage: 0
+--- !u!114 &4846239827464698568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932740353138688541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7815030ab5b8444a2f7b878eab6670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
 --- !u!1 &4990608992298394664
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +546,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6241730186686129063}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0000001192093, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0.31044683, z: 0.049765613}
   m_LocalScale: {x: 0.9999998, y: 1, z: 0.9999998}
   m_ConstrainProportionsScale: 0
