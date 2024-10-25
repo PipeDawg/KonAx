@@ -475,13 +475,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _isAttacking: 0
   _canDamage: 0
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
   speed: 0.01
   rotationSpeed: 100
   patrolWaitTime: 0
   health: 10
   enemyDamage: 1
-  attackRange: 1
+  attackRange: 0.5
   weapon: {fileID: 5753761309881879774}
 --- !u!1 &5634784309234518412
 GameObject:
@@ -830,7 +832,7 @@ GameObject:
   - component: {fileID: 5059771747115143240}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: EnemyKnight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
