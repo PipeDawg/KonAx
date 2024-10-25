@@ -678,7 +678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3931733132512936710}
-  - component: {fileID: 305402087039889148}
+  - component: {fileID: 5811524773677309254}
   m_Layer: 0
   m_Name: Body
   m_TagString: Player
@@ -706,7 +706,7 @@ Transform:
   - {fileID: 3692825520140905601}
   m_Father: {fileID: 7788565993429089148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &305402087039889148
+--- !u!136 &5811524773677309254
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -726,9 +726,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1.9463282
   m_Direction: 1
-  m_Center: {x: 1.6617728e-14, y: 0.97046, z: -3.3407017e-14}
+  m_Center: {x: 8.476369e-15, y: 0.95956874, z: -1.7704849e-14}
 --- !u!1 &7033271286124397679
 GameObject:
   m_ObjectHideFlags: 0

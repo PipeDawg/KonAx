@@ -485,7 +485,7 @@ MonoBehaviour:
   patrolWaitTime: 0
   health: 10
   enemyDamage: 1
-  attackRange: 1.35
+  attackRange: 1.3
   weapon: {fileID: 5753761309881879774}
   particleSystem: {fileID: 5600419694053995834, guid: 5b346e4254d548849b205112cec78267, type: 3}
   ParticleSystemSpawnPlace: {fileID: 4195846718035684285}
@@ -833,7 +833,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3025100201982251863}
-  - component: {fileID: 228259740158554207}
+  - component: {fileID: 5059771747115143240}
   m_Layer: 0
   m_Name: Body
   m_TagString: EnemyKnight
@@ -860,7 +860,7 @@ Transform:
   - {fileID: 8808590402922889172}
   m_Father: {fileID: 8256084052420723855}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &228259740158554207
+--- !u!136 &5059771747115143240
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -882,7 +882,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 1.6
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: 0, y: 0.8249291, z: 0}
 --- !u!1 &7977538830112726443
 GameObject:
   m_ObjectHideFlags: 0
