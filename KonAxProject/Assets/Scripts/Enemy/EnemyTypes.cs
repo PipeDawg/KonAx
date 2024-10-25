@@ -54,7 +54,7 @@ public abstract class EnemyTypes : MonoBehaviour
         }
         else
         {
-            if (transform.position == _targetPositionYIgnored && !_waitingForDelay)
+            if ((transform.position - _targetPositionYIgnored).magnitude < 0.1f && !_waitingForDelay)
             {     
                 Debug.Log("no more targeting player");
                 _waitingForDelay = true;
