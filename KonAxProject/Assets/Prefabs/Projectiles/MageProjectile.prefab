@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4913911580219713836, guid: 7c14d3ee0890c5b4788b11a5bea5b8f2, type: 3}
+  - {fileID: 2100000, guid: a6079d1813abafc4fb9e097e279457d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,8 +99,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.18039216, g: 0.14509805, b: 0.16862746, a: 1}
-  m_Intensity: 20
+  m_Color: {r: 0.854902, g: 0.21568629, b: 0.9843138, a: 1}
+  m_Intensity: 10
   m_Range: 3
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -4987,7 +4987,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -921838784202127032, guid: 231f144433b8531458e389d599dc294d, type: 3}
+  - {fileID: 2100000, guid: a6079d1813abafc4fb9e097e279457d1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
