@@ -1,17 +1,18 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 public class EnemyMage : EnemyTypes
 {
+    private List<GameObject> projectiles = new List<GameObject>();
+    [Header("Projectile spawnpoint and Prefab")]
     [SerializeField] private Transform projectileSpawn;
     [SerializeField] private GameObject projectilePrefab;
-    [SerializeField] private float projectileSpeed;
+    [SerializeField] private float _projectileSpeed;
 
     void Start()
     {
-        EnemySetup();
+        _animator = GetComponent<Animator>();
         MovementStart();
     }
 
@@ -21,20 +22,20 @@ public class EnemyMage : EnemyTypes
         {
             Attack();
             MovementHandler();
-            if (_isAttacking)
-            {
-                Shoot();
-            }
         }
     }
 
-    IEnumerable Shoot()
+    public override void Attack()
     {
-        yield return new WaitForSeconds(1.5f);
+        base.Attack();
+    }
+    
+    public void Shoot()
+    {
         var projectile = Instantiate(projectilePrefab,projectileSpawn.position, projectileSpawn.rotation);
-        projectile.AddComponent<MageAttack>().Damage = enemyDamage;
-        //projectile.GetComponent<Rigidbody>().AddForce(projectile.transform.forward * projectileSpeed);
-        weapon = projectile;
+        projectile.GetComponent<MageAttack>().bulletSpeed = _projectileSpeed;
+        projectile.GetComponent<MageAttack>().Damage = enemyDamage;
+        projectiles.Add(projectile);
     }
 }
 

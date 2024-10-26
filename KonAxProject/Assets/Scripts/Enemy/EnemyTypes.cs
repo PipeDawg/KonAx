@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class EnemyTypes : MonoBehaviour
@@ -9,7 +7,7 @@ public abstract class EnemyTypes : MonoBehaviour
     private Transform _targetTransform;
     private Vector3 _targetPositionYIgnored;
     private GameObject _lastWaypoint;
-    private Animator _animator;
+    [HideInInspector] public Animator _animator;
     private bool _hasTarget = false;
     private bool _waitingForDelay = false;
     [HideInInspector] public bool _isAttacking;
@@ -17,7 +15,7 @@ public abstract class EnemyTypes : MonoBehaviour
     private int _currentWaypointTargetIndex = 1;
     private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
     private static readonly int IsDead = Animator.StringToHash("IsDead");
-    [HideInInspector] public bool _isDead = false;
+    [HideInInspector] public bool _isDead;
 
     [Header("Movement Settings")]
     [SerializeField] private GameObject[] waypoints;
@@ -30,7 +28,7 @@ public abstract class EnemyTypes : MonoBehaviour
     public int enemyDamage = 1;
     [SerializeField] private float attackRange = 1;
     [Header("Weapon")]
-    [SerializeField] public GameObject weapon;
+    [SerializeField] private GameObject weapon;
     [Header("ParticleSystem and SpawnPlace")]
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private Transform ParticleSystemSpawnPlace;
@@ -40,9 +38,16 @@ public abstract class EnemyTypes : MonoBehaviour
         _rb = gameObject.GetComponent<Rigidbody>();
         _rb.freezeRotation = true;
         //_rb.useGravity = false;
-    
-        _lastWaypoint = waypoints[_currentWaypointTargetIndex];
-        _targetTransform = waypoints[_currentWaypointTargetIndex].transform;
+
+        if (waypoints.Length > 0)
+        {
+            _lastWaypoint = waypoints[_currentWaypointTargetIndex];
+            _targetTransform = waypoints[_currentWaypointTargetIndex].transform;
+        } 
+        else
+        {
+            print("No waypoints selected for enemy: " + gameObject.name);
+        }
     }
     public virtual void MovementHandler()
     {
@@ -52,11 +57,10 @@ public abstract class EnemyTypes : MonoBehaviour
             MoveToTarget();
             TurnToTarget();
         }
-        else
+        else if (waypoints.Length > 0)
         {
             if ((transform.position - _targetPositionYIgnored).magnitude < 0.1f && !_waitingForDelay)
             {     
-                Debug.Log("no more targeting player");
                 _waitingForDelay = true;
                 PatrolCycle();
                 if (_waitingForDelay)
@@ -70,6 +74,10 @@ public abstract class EnemyTypes : MonoBehaviour
                 MoveToTarget();
                 TurnToTarget();
             }
+        } 
+        else
+        {
+            print("No waypoints selected for enemy: " + gameObject.name);
         }
     }
 
@@ -105,7 +113,6 @@ public abstract class EnemyTypes : MonoBehaviour
                 _rb.velocity = _rb.velocity.normalized * speed;
             }
         }
-
     }
 
     void TurnToTarget()
@@ -132,6 +139,7 @@ public abstract class EnemyTypes : MonoBehaviour
         {
             if (waypoints.Length > 0)
             {
+                _isAttacking = false;
                 _hasTarget = false;
                 _targetTransform = _lastWaypoint.transform;
             } 
@@ -166,7 +174,7 @@ public abstract class EnemyTypes : MonoBehaviour
     public virtual void EnemySetup()
     {
         _animator = GetComponent<Animator>();
-         weapon.GetComponent<Collider>().enabled = false;
+        weapon.GetComponent<Collider>().enabled = false;
     }
 
     public virtual void Attack()
@@ -184,13 +192,13 @@ public abstract class EnemyTypes : MonoBehaviour
         _animator.SetBool(IsAttacking, false);
     }
 
-    public void CanDamage()
+    public virtual void CanDamage()
     {
         _canDamage = true;
         weapon.GetComponent<Collider>().enabled = true;
     }
 
-    public void CantDamage()
+    public virtual void CantDamage()
     {
         _canDamage = false;
         weapon.GetComponent<Collider>().enabled = false;
