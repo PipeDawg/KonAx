@@ -7,6 +7,7 @@ TagManager:
   - DestructibleObject
   - EnemyKnight
   - EnemyMage
+  - EnemyBeserker
   layers:
   - Default
   - TransparentFX
