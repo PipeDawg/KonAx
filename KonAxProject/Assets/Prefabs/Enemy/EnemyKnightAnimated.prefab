@@ -63,7 +63,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: -905690159841262435, guid: e5a3f5b963912d94fb077e30e8af022c, type: 3}
   - {fileID: -8848810374240701247, guid: e5a3f5b963912d94fb077e30e8af022c, type: 3}
-  - {fileID: -382652638819485698, guid: e5a3f5b963912d94fb077e30e8af022c, type: 3}
+  - {fileID: 2100000, guid: 0f3f787d2d033204cbb6e0e17d74e8cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -480,7 +480,7 @@ MonoBehaviour:
   _isDead: 0
   waypoints: []
   speed: 0.1
-  rotationSpeed: 100
+  rotationSpeed: 40
   patrolWaitTime: 0
   health: 10
   enemyDamage: 1
@@ -945,7 +945,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: -905690159841262435, guid: e5a3f5b963912d94fb077e30e8af022c, type: 3}
   - {fileID: -8848810374240701247, guid: e5a3f5b963912d94fb077e30e8af022c, type: 3}
-  - {fileID: -382652638819485698, guid: e5a3f5b963912d94fb077e30e8af022c, type: 3}
+  - {fileID: 2100000, guid: 0f3f787d2d033204cbb6e0e17d74e8cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
