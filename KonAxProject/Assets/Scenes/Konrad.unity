@@ -2214,9 +2214,41 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1593609794}
+    - target: {fileID: 1377174442972158503, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377174442972158503, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377174442972158503, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -750
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377174442972158503, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 450
+      objectReference: {fileID: 0}
     - target: {fileID: 2459098564349103327, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371247867417883544, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371247867417883544, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371247867417883544, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 4371247867417883544, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 8036735690218703580, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2301,6 +2333,18 @@ PrefabInstance:
     - target: {fileID: 8213951348075713219, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756263361919866907, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756263361919866907, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756263361919866907, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
