@@ -2230,6 +2230,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 450
       objectReference: {fileID: 0}
+    - target: {fileID: 1963400276075908540, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
+      propertyPath: m_Name
+      value: FadeBlack
+      objectReference: {fileID: 0}
     - target: {fileID: 2459098564349103327, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
       propertyPath: m_Name
       value: Canvas
