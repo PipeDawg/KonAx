@@ -1,5 +1,7 @@
 using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -12,16 +14,32 @@ public class PlayerStats : MonoBehaviour
     [Header("Death")]
     [SerializeField] private GameObject quitButton;
     [SerializeField] private GameObject restartButton;
-    
+
+    /// <summary>
+    ///             Healthbar below
+    /// </summary>
+    [Header("Healthbar")]
+    public Image healthBar;
+    float maxHelath;
+    [SerializeField] float lerpSpeed;
+
     private void Start()
     {
         quitButton.SetActive(false);
         restartButton.SetActive(false);
+        maxHelath = health;
     }
-    
+
+    private void Update()
+    {
+        lerpSpeed = 3f * Time.deltaTime;
+        HealthBarFiller();
+    }
+
     public void TakeDamage(int damage)
     {
         health -= damage;
+        
         Instantiate(particleSystem, platicalSpawnPlace);
         isDead();
     }
@@ -29,6 +47,7 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        HealthBarFiller();
         Instantiate(particleSystem, platicalSpawnPlace);
         isDead();
     }
@@ -40,6 +59,11 @@ public class PlayerStats : MonoBehaviour
             animator.SetBool(IsDead, true);    
             quitButton.SetActive(true);
             restartButton.SetActive(true);
+            GetComponent<PlayerMovement>().enabled = false;
         }
+    }
+    void HealthBarFiller()
+    {
+        healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, health / maxHelath, lerpSpeed);
     }
 }
