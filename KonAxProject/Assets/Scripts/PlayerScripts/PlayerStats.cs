@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] private int health;
+    [SerializeField] private float health;
     [Header("Particals")]
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private Transform platicalSpawnPlace;
@@ -20,6 +20,13 @@ public class PlayerStats : MonoBehaviour
     }
     
     public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Instantiate(particleSystem, platicalSpawnPlace);
+        isDead();
+    }
+
+    public void TakeDamage(float damage)
     {
         health -= damage;
         Instantiate(particleSystem, platicalSpawnPlace);
