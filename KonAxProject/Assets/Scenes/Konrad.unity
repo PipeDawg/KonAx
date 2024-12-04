@@ -253,6 +253,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1144781602}
     - target: {fileID: 4846239827464698568, guid: 0cdd9b4a2395d3e438972dd6333d0210, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 1542737601}
+    - target: {fileID: 4846239827464698568, guid: 0cdd9b4a2395d3e438972dd6333d0210, type: 3}
+      propertyPath: lerpSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4846239827464698568, guid: 0cdd9b4a2395d3e438972dd6333d0210, type: 3}
       propertyPath: quitButton
       value: 
       objectReference: {fileID: 722271208}
@@ -724,7 +732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8193494458254123447, guid: 8916cc491a2dc65429ca9a6c3341e230, type: 3}
       propertyPath: enemyDamage
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8193494458254123447, guid: 8916cc491a2dc65429ca9a6c3341e230, type: 3}
       propertyPath: waypoints.Array.size
@@ -981,7 +989,7 @@ Transform:
   m_GameObject: {fileID: 1359277111}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.62, y: 1.59, z: 5.42}
+  m_LocalPosition: {x: -2.42, y: 1.59, z: 6.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1131,6 +1139,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1542737601 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6378551257543929193, guid: a6355fa54c9633f45b0e54d2d854d461, type: 3}
+  m_PrefabInstance: {fileID: 5185798672257066354}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1593609794 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6267209817285239629, guid: 3b1c5db1c64d0c040a08b5424ff4fbdc, type: 3}

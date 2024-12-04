@@ -94,4 +94,9 @@ public class PlayerMovement : MonoBehaviour
              animator.SetBool(IsMoving, false);
          }
      }
+
+     public void StopMovement()
+     {
+         _rb.velocity = Vector3.zero;
+     }
 }

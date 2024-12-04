@@ -59,6 +59,7 @@ public class PlayerStats : MonoBehaviour
             animator.SetBool(IsDead, true);    
             quitButton.SetActive(true);
             restartButton.SetActive(true);
+            GetComponent<PlayerMovement>().StopMovement();
             GetComponent<PlayerMovement>().enabled = false;
         }
     }
