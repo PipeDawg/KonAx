@@ -66,4 +66,9 @@ public class PlayerStats : MonoBehaviour
     {
         healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, health / maxHelath, lerpSpeed);
     }
+
+    private void Destroy()
+    {
+        //This function is just to prevent an error
+    }
 }
