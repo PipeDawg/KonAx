@@ -5,6 +5,19 @@ public class CameraMover : MonoBehaviour
     [SerializeField] private float duration = 1;
     private float _elapsedTime;
 
+    [SerializeField] GameObject[] cameraPositions;
+    public enum CameraPositionEnum
+    {
+        StartRoom,
+        JailRoom,
+        StorageRoom,
+        BarRoom,
+        BridgeRoom1,
+        BridgeRoom2,
+        ThroneRoom
+    };
+    [SerializeField] CameraPositionEnum _enumCameraStartPosition;
+
     private Vector3 _startPos;
     private Vector3 _endPos;
     private Quaternion _startRot;
@@ -31,6 +44,38 @@ public class CameraMover : MonoBehaviour
 
     void Start()
     {
+        switch (_enumCameraStartPosition)
+        {
+            case CameraPositionEnum.StartRoom:
+                transform.position = cameraPositions[0].transform.position;
+                transform.rotation = cameraPositions[0].transform.rotation;
+                break;
+            case CameraPositionEnum.JailRoom:
+                transform.position = cameraPositions[1].transform.position;
+                transform.rotation = cameraPositions[1].transform.rotation;
+                break;
+            case CameraPositionEnum.StorageRoom:
+                transform.position = cameraPositions[2].transform.position;
+                transform.rotation = cameraPositions[2].transform.rotation;
+                break;
+            case CameraPositionEnum.BarRoom:
+                transform.position = cameraPositions[3].transform.position;
+                transform.rotation = cameraPositions[3].transform.rotation;
+                break;
+            case CameraPositionEnum.BridgeRoom1:
+                transform.position = cameraPositions[4].transform.position;
+                transform.rotation = cameraPositions[4].transform.rotation;
+                break;
+            case CameraPositionEnum.BridgeRoom2:
+                transform.position = cameraPositions[5].transform.position;
+                transform.rotation = cameraPositions[5].transform.rotation;
+                break;
+            default:
+                transform.position = cameraPositions[0].transform.position;
+                transform.rotation = cameraPositions[0].transform.rotation;
+                break;
+        }
+
         _startPos = transform.position;
         _endPos = transform.position;
         _startRot = transform.rotation;
