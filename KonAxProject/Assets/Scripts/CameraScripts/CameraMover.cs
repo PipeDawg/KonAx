@@ -70,6 +70,10 @@ public class CameraMover : MonoBehaviour
                 transform.position = cameraPositions[5].transform.position;
                 transform.rotation = cameraPositions[5].transform.rotation;
                 break;
+            case CameraPositionEnum.ThroneRoom:
+                transform.position = cameraPositions[6].transform.position;
+                transform.rotation = cameraPositions[6].transform.rotation;
+                break;
             default:
                 transform.position = cameraPositions[0].transform.position;
                 transform.rotation = cameraPositions[0].transform.rotation;

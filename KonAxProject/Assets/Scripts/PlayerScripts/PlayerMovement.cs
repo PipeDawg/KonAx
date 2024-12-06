@@ -6,7 +6,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody _rb;
-    
+    [HideInInspector] public bool hasReachedFinish;
+    private PlayerFinish playerFinish;
+
     [Header("Speeds")]
     [SerializeField] private float movementAcceleration = 60;
     [SerializeField] private float maxMovementSpeed = 5;
@@ -27,10 +29,18 @@ public class PlayerMovement : MonoBehaviour
         _rb.freezeRotation = true;
         _rb.useGravity = false;
         transform.rotation = Quaternion.Euler(0,cam.transform.rotation.eulerAngles.y -365 ,0);
+        playerFinish = GetComponent<PlayerFinish>();
     }
 
     void Update()
     {
+        if (hasReachedFinish)
+        {
+            _rb.velocity = Vector3.zero;
+            playerFinish.enabled = true;
+            this.enabled = false;
+        }
+
         // Resets the players movement vector to the cameras forward face.
         if (transform.rotation != Quaternion.Euler(transform.rotation.x,cam.transform.rotation.eulerAngles.y -365 ,transform.rotation.z))
         {
