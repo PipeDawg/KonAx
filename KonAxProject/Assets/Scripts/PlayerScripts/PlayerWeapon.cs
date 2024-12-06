@@ -2,6 +2,12 @@ using UnityEngine;
 
 public class PlayerWeapon : MonoBehaviour
 {
+    private PlayerAttack playerAttack;
+    private void Start()
+    {
+        playerAttack = GetComponentInParent<PlayerAttack>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("DestructibleObject"))
@@ -9,6 +15,7 @@ public class PlayerWeapon : MonoBehaviour
             if (GetComponentInParent<PlayerAttack>().canDamage)
             {
                 other.GetComponent<DestructibleObject>().OnHit(GetComponentInParent<PlayerAttack>().damage);
+                playerAttack.PlaySwordSound();
             }
         } 
         else if (other.CompareTag("EnemyKnight"))
@@ -16,6 +23,7 @@ public class PlayerWeapon : MonoBehaviour
             if (GetComponentInParent<PlayerAttack>().canDamage)
             {
                 other.GetComponentInParent<EnemyKnight>().OnHit(GetComponentInParent<PlayerAttack>().damage);
+                playerAttack.PlaySwordSound();
             }
         }
         else if (other.CompareTag("EnemyMage"))
@@ -23,6 +31,7 @@ public class PlayerWeapon : MonoBehaviour
             if (GetComponentInParent<PlayerAttack>().canDamage)
             {
                 other.GetComponentInParent<EnemyMage>().OnHit(GetComponentInParent<PlayerAttack>().damage);
+                playerAttack.PlaySwordSound();
             }
         }
         else if (other.CompareTag("EnemyBeserker"))
@@ -30,7 +39,9 @@ public class PlayerWeapon : MonoBehaviour
             if (GetComponentInParent<PlayerAttack>().canDamage)
             {
                 other.GetComponentInParent<EnemyBeserker>().OnHit(GetComponentInParent<PlayerAttack>().damage);
+                playerAttack.PlaySwordSound();
             }
         }
+        
     }
 }
