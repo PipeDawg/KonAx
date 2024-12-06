@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody _rb;
     [HideInInspector] public bool hasReachedFinish;
-    private PlayerFinish playerFinish;
+    private PlayerFinish _playerFinish;
+    private PlayerStats _playerStats;
 
     [Header("Speeds")]
     [SerializeField] private float movementAcceleration = 60;
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator animator;
     private static readonly int IsMoving = Animator.StringToHash("IsMoving");
+    private static readonly int HasWon = Animator.StringToHash("HasWon");
 
     void Start()
     {
@@ -29,15 +31,19 @@ public class PlayerMovement : MonoBehaviour
         _rb.freezeRotation = true;
         _rb.useGravity = false;
         transform.rotation = Quaternion.Euler(0,cam.transform.rotation.eulerAngles.y -365 ,0);
-        playerFinish = GetComponent<PlayerFinish>();
+        _playerFinish = GetComponent<PlayerFinish>();
+        _playerStats = GetComponent<PlayerStats>();
     }
 
     void Update()
     {
         if (hasReachedFinish)
         {
-            _rb.velocity = Vector3.zero;
-            playerFinish.enabled = true;
+            StopMovement();
+            animator.SetBool(HasWon, true);
+            _playerStats.SetButtonsActive();
+            _playerStats.enabled = false;
+            _playerFinish.enabled = true;
             this.enabled = false;
         }
 

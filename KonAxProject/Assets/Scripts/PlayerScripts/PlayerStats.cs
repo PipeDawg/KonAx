@@ -1,5 +1,3 @@
-using System;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,8 +55,7 @@ public class PlayerStats : MonoBehaviour
         if (health <= 0)
         {
             animator.SetBool(IsDead, true);    
-            quitButton.SetActive(true);
-            restartButton.SetActive(true);
+            SetButtonsActive();
             GetComponent<PlayerMovement>().StopMovement();
             GetComponent<PlayerMovement>().enabled = false;
         }
@@ -68,6 +65,12 @@ public class PlayerStats : MonoBehaviour
         healthBar.fillAmount = Mathf.Lerp(healthBar.fillAmount, health / maxHelath, lerpSpeed);
     }
 
+    public void SetButtonsActive()
+    {
+        quitButton.SetActive(true);
+        restartButton.SetActive(true);
+    }
+    
     private void Destroy()
     {
         //This function is just to prevent an error

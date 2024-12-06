@@ -1,20 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerFinish : MonoBehaviour
 {
     [SerializeField] private Transform startTransform;
-    [SerializeField] private Transform endTransform;
-    [SerializeField] private float rotSpeed;
+    [Header("FinishText")]
+    [SerializeField] private TextMeshProUGUI finishText; //The text
+    [SerializeField] private GameObject finishTextObject; //The object with the finish text
 
-    // Start is called before the first frame update
-    void Start()
+    private PlayerInventory _playerInventory;
+
+    private void Start()
     {
-        
+        _playerInventory = GetComponent<PlayerInventory>();
+        finishTextObject.SetActive(true);
+        finishText.text = "You have found the throne\nYou found " + _playerInventory.coins + " coins on your way";
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.rotation *= Quaternion.FromToRotation(startTransform.forward, Vector3.right);
