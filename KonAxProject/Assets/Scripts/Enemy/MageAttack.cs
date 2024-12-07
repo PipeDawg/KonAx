@@ -6,6 +6,7 @@ public class MageAttack : MonoBehaviour
     [HideInInspector] public int Damage;
     [HideInInspector] public float bulletSpeed;
     private ParticleSystem _particleSystem;
+    [SerializeField] private AudioClip[] explosionSounds;
 
     void Start()
     {
@@ -47,5 +48,6 @@ public class MageAttack : MonoBehaviour
         GetComponent<Light>().enabled = false;
         GetComponent<MeshRenderer>().enabled = false;
         _particleSystem.Play();
+        GetComponent<AudioSource>().PlayOneShot(explosionSounds[Random.Range(0,explosionSounds.Length -1)]);
     }
 }

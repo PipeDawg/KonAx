@@ -32,6 +32,8 @@ public abstract class EnemyTypes : MonoBehaviour
     [Header("ParticleSystem and SpawnPlace")]
     [SerializeField] private ParticleSystem particleSystem;
     [SerializeField] private Transform ParticleSystemSpawnPlace;
+    [Header("SoundSettings")]
+    [SerializeField] public AudioClip[] attackSounds;
 
     public virtual void MovementStart()
     {
@@ -181,6 +183,7 @@ public abstract class EnemyTypes : MonoBehaviour
     {
         if (_hasTarget && Mathf.Abs((transform.position - _targetTransform.position).magnitude) <= attackRange)
         {
+            AttackSound();
             _isAttacking = true;
             _animator.SetBool(IsAttacking, true);
         }
@@ -202,5 +205,14 @@ public abstract class EnemyTypes : MonoBehaviour
     {
         _canDamage = false;
         weapon.GetComponent<Collider>().enabled = false;
+    }
+
+    public virtual void AttackSound()
+    {
+        if (!GetComponent<AudioSource>().isPlaying)
+        {
+            GetComponent<AudioSource>().clip = attackSounds[2];
+            GetComponent<AudioSource>().Play();
+        }
     }
 }
